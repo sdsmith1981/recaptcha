@@ -1,16 +1,18 @@
-<?php namespace Famdirksen\Recaptcha;
+<?php
+
+namespace Famdirksen\Recaptcha;
 
 use Illuminate\Support\ServiceProvider;
 
 /**
- * Service provider for the Recaptcha class
+ * Service provider for the Recaptcha class.
  *
  * @author     Greg Gilbert
+ *
  * @link       https://github.com/greggilbert
  */
 class RecaptchaServiceProvider extends ServiceProvider
 {
-
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -27,16 +29,16 @@ class RecaptchaServiceProvider extends ServiceProvider
     {
         $this->addValidator();
 
-        $this->loadViewsFrom(__DIR__ . '/views', 'recaptcha');
+        $this->loadViewsFrom(__DIR__.'/views', 'recaptcha');
     }
 
     /**
-     * Extends Validator to include a recaptcha type
+     * Extends Validator to include a recaptcha type.
      */
     public function addValidator()
     {
         $this->app->validator->extendImplicit('recaptcha', function ($attribute, $value, $parameters) {
-            $captcha   = app('recaptcha.service');
+            $captcha = app('recaptcha.service');
             $challenge = app('request')->input($captcha->getResponseKey());
 
             return $captcha->check($challenge, $value);
@@ -58,21 +60,20 @@ class RecaptchaServiceProvider extends ServiceProvider
     {
         $this->app->bind('recaptcha.service', function () {
             if (app('config')->get('recaptcha.version', false) === 2 || app('config')->get('recaptcha.v2', false)) {
-                return new Service\CheckRecaptchaV2;
+                return new Service\CheckRecaptchaV2();
             }
 
-            return new Service\CheckRecaptcha;
+            return new Service\CheckRecaptcha();
         });
 
         $this->app->bind('recaptcha', function () {
             return new Recaptcha($this->app->make('recaptcha.service'), app('config')->get('recaptcha'));
         });
-
     }
 
     protected function handleConfig()
     {
-        $packageConfig     = __DIR__ . '/config/recaptcha.php';
+        $packageConfig = __DIR__.'/config/recaptcha.php';
         $destinationConfig = config_path('recaptcha.php');
 
         $this->publishes([

@@ -3,13 +3,12 @@
 namespace Famdirksen\Recaptcha\Service;
 
 /**
- * Handle sending out and receiving a response to validate the captcha
+ * Handle sending out and receiving a response to validate the captcha.
  */
 class CheckRecaptchaV2 implements RecaptchaInterface
 {
-
     /**
-     * Call out to reCAPTCHA and process the response
+     * Call out to reCAPTCHA and process the response.
      *
      * @param string $challenge
      * @param string $response
@@ -24,7 +23,7 @@ class CheckRecaptchaV2 implements RecaptchaInterface
             'response' => $response,
         ]);
 
-        $url           = 'https://www.google.com/recaptcha/api/siteverify?' . $parameters;
+        $url = 'https://www.google.com/recaptcha/api/siteverify?'.$parameters;
         $checkResponse = null;
 
         // prefer curl, but fall back to file_get_contents
@@ -33,20 +32,20 @@ class CheckRecaptchaV2 implements RecaptchaInterface
             curl_setopt($curl, CURLOPT_HEADER, false);
             curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($curl, CURLOPT_TIMEOUT, app('config')->get('recaptcha.options.curl_timeout', 1));
-            if(app('config')->get('recaptcha.options.curl_verify') === false) {
-              curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+            if (app('config')->get('recaptcha.options.curl_verify') === false) {
+                curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
             }
 
             $checkResponse = curl_exec($curl);
 
-            if(false === $checkResponse) {
-              app('log')->error('[Recaptcha] CURL error: '.curl_error($curl));
+            if (false === $checkResponse) {
+                app('log')->error('[Recaptcha] CURL error: '.curl_error($curl));
             }
         } else {
             $checkResponse = file_get_contents($url);
         }
 
-        if (is_null($checkResponse) || empty( $checkResponse )) {
+        if (is_null($checkResponse) || empty($checkResponse)) {
             return false;
         }
 
