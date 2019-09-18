@@ -4,9 +4,8 @@ namespace Famdirksen\Recaptcha\Service;
 
 interface RecaptchaInterface
 {
-
     /**
-     * Call out to reCAPTCHA and process the response
+     * Call out to reCAPTCHA and process the response.
      *
      * @param string $challenge
      * @param string $response
@@ -17,13 +16,15 @@ interface RecaptchaInterface
 
     /**
      * Return template to render for reCAPTCHA
-     * Note that this will be prepended with recaptcha::
+     * Note that this will be prepended with recaptcha::.
+     *
      * @return string
      */
     public function getTemplate();
 
     /**
      * Return response key as specified in view.
+     *
      * @return string
      */
     public function getResponseKey();
