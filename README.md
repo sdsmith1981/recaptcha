@@ -7,9 +7,11 @@ Thanks to everyone for sticking by this package for years!
 Recaptcha
 =========
 
-A reCAPTCHA Validator for Laravel 5. 
+A reCAPTCHA Validator for Laravel 6. 
 
-> (Looking for a Laravel 4 version? Pull the latest 1.x tag. For Laravel 5.0, pull the latest 2.0 tag.)
+- Looking for a Laravel 4 version? Pull the latest 1.x tag. 
+- For Laravel 5.0, pull the latest 2.0 tag.
+- For Laravel 6.0, pull the latest 3.0 tag.
 
 ## Installation
 
@@ -18,7 +20,7 @@ Add the following line to the `require` section of `composer.json`:
 ```json
 {
     "require": {
-        "greggilbert/recaptcha": "dev-master"
+        "famdirksen/recaptcha": "~3.0"
     }
 }
 ```
@@ -28,13 +30,13 @@ Add the following line to the `require` section of `composer.json`:
 1. In `/config/app.php`, add the following to `providers`:
   
   ```
-  Greggilbert\Recaptcha\RecaptchaServiceProvider::class,
+  Famdirksen\Recaptcha\RecaptchaServiceProvider::class,
   ```
   and the following to `aliases`:
   ```
-  'Recaptcha' => Greggilbert\Recaptcha\Facades\Recaptcha::class,
+  'Recaptcha' => Famdirksen\Recaptcha\Facades\Recaptcha::class,
   ```
-2. Run `php artisan vendor:publish --provider="Greggilbert\Recaptcha\RecaptchaServiceProvider"`.
+2. Run `php artisan vendor:publish --provider="Famdirksen\Recaptcha\RecaptchaServiceProvider"`.
 3. In `/config/recaptcha.php`, enter your reCAPTCHA public and private keys.
   * If you are not using the most recent version of reCAPTCHA, set `version` to 1. 
   * If you are upgrading to v2 of reCAPTCHA, note that your keys from the previous version will not work, and you need to generate a new set in [the reCAPTCHA admin](https://www.google.com/recaptcha/admin).

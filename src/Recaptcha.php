@@ -1,10 +1,9 @@
 <?php
 
-namespace Greggilbert\Recaptcha;
+namespace Famdirksen\Recaptcha;
 
 class Recaptcha
 {
-
     protected $service;
 
     protected $config = [ ];
