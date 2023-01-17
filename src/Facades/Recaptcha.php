@@ -1,6 +1,6 @@
 <?php
 
-namespace Famdirksen\Recaptcha\Facades;
+namespace SdSmith1981\Recaptcha\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Famdirksen\Recaptcha;
+namespace SdSmith1981\Recaptcha;
 
 class Recaptcha
 {

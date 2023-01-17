@@ -1,6 +1,6 @@
 <?php
 
-namespace Famdirksen\Recaptcha\Service;
+namespace SdSmith1981\Recaptcha\Service;
 
 /**
  * Handle sending out and receiving a response to validate the captcha.

@@ -10,7 +10,7 @@
             "email": "greg@greg-gilbert.com"
         },{
             "name": "Robin Dirksen",
-            "email": "info@famdirksen.nl"
+            "email": "info@SdSmith1981.nl"
         }
     ],
     "require": {
@@ -25,5 +25,5 @@
             "Sdsmith1981\\Recaptcha\\": "src/"
         }
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "stable"
 }

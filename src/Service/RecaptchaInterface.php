@@ -1,6 +1,6 @@
 <?php
 
-namespace Famdirksen\Recaptcha\Service;
+namespace SdSmith1981\Recaptcha\Service;
 
 interface RecaptchaInterface
 {
