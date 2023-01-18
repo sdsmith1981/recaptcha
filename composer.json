@@ -22,7 +22,7 @@
             "src/migrations"
         ],
         "psr-4": {
-            "Sdsmith1981\\Recaptcha\\": "src/"
+            "SdSmith1981\\Recaptcha\\": "src/"
         }
     },
     "minimum-stability": "stable"
